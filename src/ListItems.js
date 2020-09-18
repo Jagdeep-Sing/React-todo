@@ -6,10 +6,16 @@ function ListItems(props) {
     const items = props.items;
     const listItems = items.map(item => {
         return <div className="list" key={item.key}>
-            <p>{item.text}
+            <p>
+                <input type="text" id={item.key} value={item.text}/>
             <span>
                 <FontAwesomeIcon className="faicons" icon="trash"
-                onClick={ () => props.deleteItem(item.key)} />
+                onClick={ () => props.deleteItem(item.key)}
+                onChange = {
+                    (e) => {
+                        props.setUpdate(e.target.value, item.key)
+                    }
+                } />
             </span>
             </p>
             
