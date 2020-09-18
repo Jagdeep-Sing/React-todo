@@ -18,7 +18,7 @@ class App extends React.Component{
     }
     this.handleInput = this.handleInput.bind(this);
     this.addItem = this.addItem.bind(this);
-
+    this.deleteItem = this.deleteItem.bind(this);
   }
 
   addItem(e) {
@@ -34,6 +34,13 @@ class App extends React.Component{
         }
       })
     }
+  }
+
+  deleteItem(key) {
+    const filteresItems = this.state.items.filter(item => item.key !== key);
+    this.setState({
+      items: filteresItems
+  })
   }
 
   handleInput(e) {
@@ -57,7 +64,8 @@ class App extends React.Component{
             </button>
         </form>
       </header>
-      <ListItems items = {this.state.items}></ListItems>
+      <ListItems items = {this.state.items}
+      deleteItem = {this.deleteItem}></ListItems>
       </div>
       
     )
