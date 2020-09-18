@@ -51,6 +51,9 @@ class App extends React.Component{
         item.text = text;
       }
     })
+    this.setState({
+      items: items
+    })
   }
 
   handleInput(e) {
